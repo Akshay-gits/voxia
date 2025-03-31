@@ -43,7 +43,7 @@ const MirrorSpeak = () => {
     setIsTopicLoading(true);
     try {
       const token = await getToken();
-      const response = await fetch('http://localhost:5000/api/generate-topic', {
+      const response = await fetch('${import.meta.env.VITE_API_URL}/api/generate-topic', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -129,7 +129,7 @@ const MirrorSpeak = () => {
     setIsFeedbackLoading(true);
     try {
       const token = await getToken();
-      const response = await fetch('http://localhost:5000/api/get-feedback', {
+      const response = await fetch('${import.meta.env.VITE_API_URL}/api/get-feedback', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -159,7 +159,7 @@ const MirrorSpeak = () => {
         feedback: data.feedback.recentFeedback
       };
 
-      await fetch('http://localhost:5000/api/save-session', {
+      await fetch('${import.meta.env.VITE_API_URL}/api/save-session', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
