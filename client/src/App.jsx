@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink, Navigate } from "react-router-dom";
 import { SignedIn, SignedOut, SignInButton, UserButton, useAuth } from "@clerk/clerk-react";
 import HomePage from "./pages/HomePage";
@@ -30,6 +30,12 @@ const ProtectedRoute = ({ children }) => {
 
 // Header Component with Navigation
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className="bg-white shadow-md py-4 sticky top-0 z-10">
       <div className="container mx-auto px-6">
@@ -39,7 +45,7 @@ const Header = () => {
             <img src="/v logo.png" alt="Voxia Logo" className="h-30 w-auto" />
           </div>
           
-          {/* Navigation */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <NavLink 
               to="/home" 
@@ -85,15 +91,62 @@ const Header = () => {
             </SignedIn>
           </div>
           
-          {/* Mobile Menu Button (for responsive design) */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <button className="text-gray-600 hover:text-indigo-600 focus:outline-none">
+            <button 
+              onClick={toggleMenu}
+              className="text-gray-600 hover:text-indigo-600 focus:outline-none"
+              aria-label="Toggle menu"
+            >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden mt-4 border-t pt-4 pb-2">
+            <div className="flex flex-col space-y-4">
+              <NavLink 
+                to="/home" 
+                className={({ isActive }) => 
+                  isActive 
+                    ? "text-indigo-600 font-medium border-l-4 border-indigo-600 pl-2" 
+                    : "text-gray-600 hover:text-indigo-600 transition-colors pl-2"
+                }
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </NavLink>
+              <SignedIn>
+                <NavLink 
+                  to="/dashboard" 
+                  className={({ isActive }) => 
+                    isActive 
+                      ? "text-indigo-600 font-medium border-l-4 border-indigo-600 pl-2" 
+                      : "text-gray-600 hover:text-indigo-600 transition-colors pl-2"
+                  }
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Dashboard
+                </NavLink>
+                <NavLink 
+                  to="/arena" 
+                  className={({ isActive }) => 
+                    isActive 
+                      ? "text-indigo-600 font-medium border-l-4 border-indigo-600 pl-2" 
+                      : "text-gray-600 hover:text-indigo-600 transition-colors pl-2"
+                  }
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Arena
+                </NavLink>
+              </SignedIn>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );
