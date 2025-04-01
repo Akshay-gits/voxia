@@ -386,7 +386,7 @@ const MirrorSpeak = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 bg-black rounded-xl overflow-hidden shadow-lg">
               <div className="relative h-0 pb-[56.25%]">
-                <video ref={videoRef} autoPlay playsInline className="absolute inset-0 w-full h-full object-cover" />
+                <video ref={videoRef} autoPlay playsInline className="absolute inset-0 w-full h-full object-cover scale-x-[-1]" />
                 <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full flex items-center text-sm animate-pulse">
                   <span className="w-3 h-3 bg-white rounded-full mr-2"></span>
                   REC {formatTime(recordingDuration)}
