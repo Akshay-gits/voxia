@@ -5,7 +5,7 @@ import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { useAuth } from '@clerk/clerk-react';
 import axios from 'axios';
 
-const API_BASE_URL = '${import.meta.env.VITE_API_URL}/api/dashboard';
+const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api/dashboard`;
 
 const Dashboard = () => {
   const { getToken } = useAuth();
