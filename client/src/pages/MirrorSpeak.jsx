@@ -43,6 +43,7 @@ const MirrorSpeak = () => {
     setIsTopicLoading(true);
     try {
       const token = await getToken();
+      console.log(`Requesting URL: ${import.meta.env.VITE_API_URL}/api/generate-topic`);
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/generate-topic`, {
         method: 'GET',
         headers: {
