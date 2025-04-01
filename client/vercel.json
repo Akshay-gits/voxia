@@ -1,0 +1,24 @@
+{
+  "routes": [
+    {
+      "src": "/mirror",
+      "dest": "/index.html",
+      "status": 200
+    },
+    {
+      "src": "/arena",
+      "dest": "/index.html",
+      "status": 200
+    },
+    {
+      "src": "/dashboard",
+      "dest": "/index.html",
+      "status": 200
+    },
+    {
+      "src": "/(.*)", 
+      "status": 404,
+      "dest": "/404"
+    }
+  ]
+}
