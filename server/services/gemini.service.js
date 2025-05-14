@@ -44,7 +44,7 @@ Provide a structured response in JSON format with the following fields:
 7. **"scores"**: An object containing:
    - **"grammar"**: Score out of 100 for grammatical accuracy
    - **"vocabulary"**: Score out of 100 for vocabulary usage
-   - **"confidence"**: The user's self-rated confidence score (${confidenceScore} converted to 25-point scale)
+   - **"confidence"**: The user's self-rated confidence score (${confidenceScore} converted to 100-point scale)
    - **"relevance"**: Score out of 100 for relevance to the topic
    - **"overall"**: Overall score out of 100 (calculated as: grammar*0.25 + vocabulary*0.25 + (confidence*2.5) + relevance*0.25)
 8. **"recentFeedback"**: A concise summary (1-2 sentences) of the most important improvement suggestion that can be directly stored in the database
